@@ -8,6 +8,8 @@ import { formatPrice } from "@/lib/utils";
 export default function CheckoutPage() {
   const { items, total, clearCart } = useCart();
   const [step, setStep] = useState<"info" | "shipping" | "payment" | "done">("info");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [form, setForm] = useState({
     email: "", firstName: "", lastName: "", address: "",
     city: "", zip: "", country: "DK", phone: "",
@@ -135,12 +137,44 @@ export default function CheckoutPage() {
               </div>
               <div className="flex gap-3 pt-2">
                 <button onClick={() => setStep("shipping")} className="btn-secondary flex-1 justify-center">Tilbage</button>
+                {submitError && <p className="text-xs text-red-500">{submitError}</p>}
                 <button
-                  onClick={() => { clearCart(); setStep("done"); }}
-                  disabled={!form.cardNumber || !form.cardExpiry || !form.cardCvc}
+                  onClick={async () => {
+                    if (!form.cardNumber || !form.cardExpiry || !form.cardCvc) return;
+                    setSubmitting(true);
+                    setSubmitError(null);
+                    try {
+                      const r = await fetch("/api/checkout", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          customerName: `${form.firstName} ${form.lastName}`.trim(),
+                          customerEmail: form.email,
+                          customerPhone: form.phone,
+                          customerAddress: `${form.address}, ${form.zip} ${form.city}, ${form.country}`,
+                          items: items.map(i => ({
+                            id: i.product.id,
+                            name: i.product.name,
+                            price: i.product.price,
+                            quantity: i.quantity,
+                            image: i.product.images[0],
+                          })),
+                          total: orderTotal,
+                        }),
+                      });
+                      if (!r.ok) throw new Error();
+                      clearCart();
+                      setStep("done");
+                    } catch {
+                      setSubmitError("Betalingen mislykkedes. Prøv igen.");
+                    } finally {
+                      setSubmitting(false);
+                    }
+                  }}
+                  disabled={!form.cardNumber || !form.cardExpiry || !form.cardCvc || submitting}
                   className="btn-primary flex-1 justify-center py-3"
                 >
-                  <Lock className="w-4 h-4" /> Betal {formatPrice(orderTotal)}
+                  <Lock className="w-4 h-4" /> {submitting ? "Behandler..." : `Betal ${formatPrice(orderTotal)}`}
                 </button>
               </div>
             </div>
