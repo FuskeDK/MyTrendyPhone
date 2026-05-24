@@ -47,10 +47,10 @@ export default function Navbar() {
           scrolled ? "shadow-sm" : ""
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center gap-4">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center mr-4 shrink-0">
-            <img src="/logo.png" alt="MyTrendyPhone" className="h-12 w-auto" />
+            <img src="/logo.png" alt="MyTrendyPhone" className="h-16 w-auto" />
           </Link>
 
           {/* Desktop nav */}

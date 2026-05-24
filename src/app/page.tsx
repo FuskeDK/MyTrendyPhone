@@ -1,51 +1,37 @@
 import Link from "next/link";
-import { ArrowRight, Shield, Truck, RotateCcw, Headphones } from "lucide-react";
+import { ArrowRight, Shield, Truck, RotateCcw, Headphones, Smartphone, Zap, Volume2, Battery, MonitorSmartphone } from "lucide-react";
 import { categories } from "@/data/categories";
-import { getFeaturedProducts, getNewArrivals, getSaleProducts } from "@/data/products";
+import { getFeaturedProducts, getNewArrivals } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 
 const perks = [
-  { icon: Truck, title: "Gratis fragt", sub: "Ved kob over 499 kr" },
+  { icon: Truck, title: "Gratis fragt", sub: "Ved køb over 499 kr" },
   { icon: RotateCcw, title: "30 dages retur", sub: "Ingen begrundelse krævet" },
-  { icon: Shield, title: "2 ars garanti", sub: "Pa alle produkter" },
+  { icon: Shield, title: "2 års garanti", sub: "På alle produkter" },
   { icon: Headphones, title: "Support 7 dage", sub: "Chat, telefon og e-mail" },
 ];
 
-const heroProducts = [
-  {
-    label: "Mobilcovers",
-    img: "https://images.unsplash.com/photo-1547658718-f4311ad64746?w=400&q=80",
-    href: "/category/phone-cases",
-  },
-  {
-    label: "Hovedtelefoner",
-    img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80",
-    href: "/category/headphones-earbuds",
-  },
-  {
-    label: "Opladere",
-    img: "https://images.unsplash.com/photo-1499033300314-43c811cff6d5?w=400&q=80",
-    href: "/category/chargers-cables",
-  },
-  {
-    label: "Tradlos opladning",
-    img: "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=400&q=80",
-    href: "/category/wireless-charging",
-  },
-];
+const categoryIcons: Record<string, React.ElementType> = {
+  "phone-cases": Smartphone,
+  "chargers-cables": Zap,
+  "headphones-earbuds": Volume2,
+  "power-banks": Battery,
+  "screen-protectors": MonitorSmartphone,
+  "wireless-charging": Zap,
+  "mounts-stands": MonitorSmartphone,
+};
 
 export default function HomePage() {
   const featured = getFeaturedProducts();
   const newArrivals = getNewArrivals();
-  const sale = getSaleProducts();
 
   return (
     <div>
       {/* ── Hero ── */}
       <section className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid md:grid-cols-[1fr_auto] gap-14 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
           <div className="max-w-xl">
-            <h1 className="text-5xl md:text-[68px] font-extrabold leading-[1.0] tracking-tight mb-6 text-gray-900">
+            <h1 className="text-5xl md:text-[64px] font-extrabold leading-[1.05] tracking-tight mb-6 text-gray-900">
               Alt hvad din telefon har brug for.
             </h1>
             <p className="text-gray-400 text-lg leading-relaxed mb-8 max-w-sm">
@@ -61,22 +47,14 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="hidden md:grid grid-cols-2 gap-3 w-[380px] shrink-0">
-            {heroProducts.map((p) => (
-              <Link
-                key={p.label}
-                href={p.href}
-                className="group relative rounded-2xl overflow-hidden aspect-square bg-gray-100"
-              >
-                <img
-                  src={p.img}
-                  alt={p.label}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                <span className="absolute bottom-3 left-3 text-white text-xs font-bold">{p.label}</span>
-              </Link>
-            ))}
+          <div className="hidden md:flex justify-center items-center">
+            <div className="relative w-80 h-80 rounded-3xl overflow-hidden bg-gray-50">
+              <img
+                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=640&q=80"
+                alt="Premium tilbehør"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -100,28 +78,26 @@ export default function HomePage() {
 
       {/* ── Categories ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-        <div className="flex items-end justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">Shop efter kategori</h2>
-        </div>
+        <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-8">Shop efter kategori</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-          {categories.map((cat) => (
-            <Link
-              key={cat.id}
-              href={`/category/${cat.slug}`}
-              className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100"
-            >
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="text-white font-bold text-sm leading-snug">{cat.name}</p>
-                <p className="text-white/60 text-xs mt-0.5">{cat.count} produkter</p>
-              </div>
-            </Link>
-          ))}
+          {categories.slice(0, 8).map((cat) => {
+            const Icon = categoryIcons[cat.slug] ?? Smartphone;
+            return (
+              <Link
+                key={cat.id}
+                href={`/category/${cat.slug}`}
+                className="group flex items-center gap-3 p-4 rounded-2xl bg-gray-50 hover:bg-blue-50 hover:border-blue-100 border border-transparent transition-all"
+              >
+                <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center shrink-0 group-hover:shadow-md transition-shadow">
+                  <Icon className="w-5 h-5 text-[#2563eb]" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm font-bold text-gray-900 truncate">{cat.name}</p>
+                  <p className="text-xs text-gray-400">{cat.count} produkter</p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -142,54 +118,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Promo banners ── */}
-      <section className="border-t border-gray-100 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid md:grid-cols-2 gap-4">
-            <Link
-              href="/category/wireless-charging"
-              className="group relative rounded-2xl overflow-hidden bg-gray-900 p-8 min-h-56 flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-[#2563eb] text-xs font-bold uppercase tracking-widest">Udvalgt</span>
-                <h3 className="text-white text-2xl font-extrabold mt-2 leading-tight">
-                  Oplad tradlost.<br />Oplad hurtigere.
-                </h3>
-                <p className="text-white/50 text-sm mt-2">MagSafe og Qi2 op til 15W</p>
-              </div>
-              <span className="btn-primary mt-4 self-start">
-                Shop opladere <ArrowRight className="w-4 h-4" />
-              </span>
-              <img
-                src="https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=400&q=80"
-                alt=""
-                className="absolute right-0 bottom-0 w-44 h-44 object-cover rounded-tl-2xl opacity-20"
-              />
-            </Link>
-            <Link
-              href="/category/headphones-earbuds"
-              className="group relative rounded-2xl overflow-hidden bg-gray-50 p-8 min-h-56 flex flex-col justify-between border border-gray-100"
-            >
-              <div>
-                <span className="text-gray-400 text-xs font-bold uppercase tracking-widest">Premium lyd</span>
-                <h3 className="text-gray-900 text-2xl font-extrabold mt-2 leading-tight">
-                  Hor hvert<br />eneste detalje.
-                </h3>
-                <p className="text-gray-400 text-sm mt-2">Sony, Apple, Samsung og meget mere</p>
-              </div>
-              <span className="btn-primary mt-4 self-start">
-                Shop hovedtelefoner <ArrowRight className="w-4 h-4" />
-              </span>
-              <img
-                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80"
-                alt=""
-                className="absolute right-0 bottom-0 w-44 h-44 object-cover rounded-tl-2xl opacity-30"
-              />
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ── New arrivals ── */}
       <section className="border-t border-gray-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -201,28 +129,6 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {newArrivals.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Sale ── */}
-      <section className="border-t border-gray-100 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-end justify-between mb-8">
-            <div className="flex items-center gap-3">
-              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">Pa tilbud nu</h2>
-              <span className="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-md uppercase tracking-wide">
-                Tilbud
-              </span>
-            </div>
-            <Link href="/category/phone-cases" className="btn-secondary text-xs">
-              Se alle <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {sale.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
