@@ -15,8 +15,8 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 1284,
     images: [
-      "https://images.unsplash.com/photo-1601972599720-36938d4ecd31?w=800&q=80",
-      "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80",
+      "https://images.unsplash.com/photo-1583291023438-41cef6453b1f?w=800&q=80",
+      "https://images.unsplash.com/photo-1547658718-f4311ad64746?w=800&q=80",
     ],
     variants: [
       { id: "v1", color: "Clear", colorHex: "#f0f0f0", stock: 24 },
@@ -38,7 +38,7 @@ export const products: Product[] = [
     rating: 4.5,
     reviewCount: 342,
     images: [
-      "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80",
+      "https://images.unsplash.com/photo-1547658718-f4311ad64746?w=800&q=80",
     ],
     variants: [
       { id: "v1", color: "Tan", colorHex: "#c49a6c", stock: 12 },
@@ -61,7 +61,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviewCount: 2108,
     images: [
-      "https://images.unsplash.com/photo-1617296538902-887900d9b592?w=800&q=80",
+      "https://images.unsplash.com/photo-1623393884989-cb3663e431c5?w=800&q=80",
     ],
     variants: [
       { id: "v1", color: "Sort", colorHex: "#1a1a1a", stock: 45 },
@@ -82,7 +82,7 @@ export const products: Product[] = [
     rating: 4.4,
     reviewCount: 218,
     images: [
-      "https://images.unsplash.com/photo-1567581935884-3349723552ca?w=800&q=80",
+      "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80",
     ],
     variants: [
       { id: "v1", color: "Hazel", colorHex: "#6b5344", stock: 15 },
@@ -105,7 +105,7 @@ export const products: Product[] = [
     rating: 4.8,
     reviewCount: 89,
     images: [
-      "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800&q=80",
+      "https://images.unsplash.com/photo-1619510077413-6ad48a569b5d?w=800&q=80",
     ],
     variants: [
       { id: "v1", color: "Sort", colorHex: "#1a1a1a", stock: 10 },
@@ -128,7 +128,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviewCount: 3241,
     images: [
-      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80",
+      "https://images.unsplash.com/photo-1695048064926-4da0dd8259d1?w=800&q=80",
     ],
     variants: [
       { id: "v1", label: "1-pak", stock: 100 },
@@ -150,7 +150,7 @@ export const products: Product[] = [
     rating: 4.3,
     reviewCount: 756,
     images: [
-      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&q=80",
+      "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&q=80",
     ],
     badge: "sale",
     features: ["30 graders privatlivsvinkel", "9H hårdhed", "Anti-fingeraftryk", "Cover-venlig"],
@@ -186,7 +186,7 @@ export const products: Product[] = [
     rating: 4.8,
     reviewCount: 2187,
     images: [
-      "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&q=80",
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=800&q=80",
     ],
     badge: "popular",
     features: ["3 porte (2x USB-C + USB-A)", "140W samlet output", "GaN-teknologi", "Kompakt design"],
@@ -203,7 +203,7 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 8934,
     images: [
-      "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=80",
+      "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=800&q=80",
     ],
     features: ["15W hurtigopladning", "MagSafe magnetisk justering", "2m kabel", "USB-C stik"],
   },
@@ -219,7 +219,7 @@ export const products: Product[] = [
     rating: 4.5,
     reviewCount: 3456,
     images: [
-      "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&q=80",
+      "https://images.unsplash.com/photo-1499033300314-43c811cff6d5?w=800&q=80",
     ],
     variants: [
       { id: "v1", color: "Sort", colorHex: "#1a1a1a", stock: 50 },
@@ -241,7 +241,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviewCount: 1127,
     images: [
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=800&q=80",
     ],
     badge: "sale",
     features: ["15W MagSafe til iPhone", "Apple Watch hurtigopladning", "AirPods-pude", "Kabelfrit skrivebord"],
@@ -257,7 +257,7 @@ export const products: Product[] = [
     rating: 4.5,
     reviewCount: 892,
     images: [
-      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=800&q=80",
+      "https://images.unsplash.com/photo-1627886107121-b7daaede3974?w=800&q=80",
     ],
     badge: "new",
     features: ["Qi2-standard", "15W hurtigopladning", "Universal kompatibilitet", "LED-indikator"],
@@ -275,7 +275,7 @@ export const products: Product[] = [
     rating: 4.9,
     reviewCount: 12847,
     images: [
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=80",
+      "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=800&q=80",
     ],
     badge: "popular",
     features: ["Aktiv stojreduktion", "Adaptiv gennemsigtighed", "Personaliseret rumlig lyd", "MagSafe-opladeretui"],
@@ -312,7 +312,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviewCount: 2304,
     images: [
-      "https://images.unsplash.com/photo-1606741965509-717c98d4e27e?w=800&q=80",
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&q=80",
     ],
     variants: [
       { id: "v1", color: "Hvid Solv", colorHex: "#e8e8e8", stock: 20 },
@@ -335,7 +335,7 @@ export const products: Product[] = [
     rating: 4.7,
     reviewCount: 4312,
     images: [
-      "https://images.unsplash.com/photo-1609592806156-4a95b2ad6e52?w=800&q=80",
+      "https://images.unsplash.com/photo-1566554738544-d962991c3fee?w=800&q=80",
     ],
     badge: "popular",
     features: ["26800mAh kapacitet", "65W USB-C output", "3 porte samtidigt", "PowerIQ 4.0"],
@@ -352,7 +352,7 @@ export const products: Product[] = [
     rating: 4.5,
     reviewCount: 1892,
     images: [
-      "https://images.unsplash.com/photo-1609592806156-4a95b2ad6e52?w=800&q=80",
+      "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&q=80",
     ],
     variants: [
       { id: "v1", color: "Hvid", colorHex: "#f5f5f5", stock: 22 },
@@ -375,7 +375,7 @@ export const products: Product[] = [
     rating: 4.8,
     reviewCount: 2876,
     images: [
-      "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=800&q=80",
+      "https://images.unsplash.com/photo-1536825591064-574efec257f2?w=800&q=80",
     ],
     badge: "popular",
     features: ["4x stærkere MagSafe", "360-graders rotation", "En-hands betjening", "Universal ventilationsklemme"],
@@ -391,7 +391,7 @@ export const products: Product[] = [
     rating: 4.4,
     reviewCount: 1543,
     images: [
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
+      "https://images.unsplash.com/photo-1717007873182-7cc5d673cbff?w=800&q=80",
     ],
     features: ["Justerbar 15-90 grader", "Universal kompatibilitet", "Aluminiumskonstruktion", "Skridsikker bund"],
   },
@@ -431,7 +431,7 @@ export const products: Product[] = [
     rating: 4.5,
     reviewCount: 876,
     images: [
-      "https://images.unsplash.com/photo-1542751110-97427bbecf20?w=800&q=80",
+      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80",
     ],
     badge: "sale",
     features: ["3-lags beskyttelse", "Indbygget kickstand", "S Pen-holder", "Portdæksler"],

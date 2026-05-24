@@ -14,7 +14,7 @@ const perks = [
 const heroProducts = [
   {
     label: "Mobilcovers",
-    img: "https://images.unsplash.com/photo-1601972599720-36938d4ecd31?w=400&q=80",
+    img: "https://images.unsplash.com/photo-1547658718-f4311ad64746?w=400&q=80",
     href: "/category/phone-cases",
   },
   {
@@ -24,12 +24,12 @@ const heroProducts = [
   },
   {
     label: "Opladere",
-    img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=80",
+    img: "https://images.unsplash.com/photo-1499033300314-43c811cff6d5?w=400&q=80",
     href: "/category/chargers-cables",
   },
   {
     label: "Tradlos opladning",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80",
+    img: "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=400&q=80",
     href: "/category/wireless-charging",
   },
 ];
@@ -161,7 +161,7 @@ export default function HomePage() {
                 Shop opladere <ArrowRight className="w-4 h-4" />
               </span>
               <img
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
+                src="https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=400&q=80"
                 alt=""
                 className="absolute right-0 bottom-0 w-44 h-44 object-cover rounded-tl-2xl opacity-20"
               />

@@ -6,7 +6,7 @@ export const categories: Category[] = [
     name: "Mobilcovers",
     slug: "phone-cases",
     description: "Beskyt din telefon med stil - stort udvalg af covers og cases",
-    image: "https://images.unsplash.com/photo-1601972599720-36938d4ecd31?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1547658718-f4311ad64746?w=600&q=80",
     count: 248,
   },
   {
@@ -14,7 +14,7 @@ export const categories: Category[] = [
     name: "Skærmskånere",
     slug: "screen-protectors",
     description: "Krystalklar beskyttelse til din skærm",
-    image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1695048064926-4da0dd8259d1?w=600&q=80",
     count: 84,
   },
   {
@@ -22,7 +22,7 @@ export const categories: Category[] = [
     name: "Opladere og kabler",
     slug: "chargers-cables",
     description: "Hurtigopladning til alle dine enheder",
-    image: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1499033300314-43c811cff6d5?w=600&q=80",
     count: 132,
   },
   {
@@ -30,7 +30,7 @@ export const categories: Category[] = [
     name: "Tradlos opladning",
     slug: "wireless-charging",
     description: "Oplad uden ledning med MagSafe og Qi2",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=600&q=80",
     count: 56,
   },
   {
@@ -46,7 +46,7 @@ export const categories: Category[] = [
     name: "Powerbanks",
     slug: "power-banks",
     description: "Aldrig mere tomt for strom pa farten",
-    image: "https://images.unsplash.com/photo-1609592806156-4a95b2ad6e52?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1566554738544-d962991c3fee?w=600&q=80",
     count: 41,
   },
   {
@@ -54,7 +54,7 @@ export const categories: Category[] = [
     name: "Holdere og stativer",
     slug: "mounts-stands",
     description: "Hold din enhed i den perfekte position",
-    image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1536825591064-574efec257f2?w=600&q=80",
     count: 62,
   },
   {
