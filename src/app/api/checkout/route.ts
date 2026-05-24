@@ -9,11 +9,12 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { customerName, customerEmail, customerPhone, customerAddress, items, total } = body;
 
-    const r = await fetch(`${MARKETY_API}/api/orders`, {
+    const r = await fetch(`${MARKETY_API}/api/dashboard-api`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        clientToken: CLIENT_TOKEN,
+        action: "create-order",
+        token: CLIENT_TOKEN,
         customerName,
         customerEmail,
         customerPhone,
