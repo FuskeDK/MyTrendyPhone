@@ -1,0 +1,68 @@
+import type { Category } from "@/types";
+
+export const categories: Category[] = [
+  {
+    id: "cases",
+    name: "Phone Cases",
+    slug: "phone-cases",
+    description: "Protect your phone in style with our wide range of cases",
+    image: "https://images.unsplash.com/photo-1601972599720-36938d4ecd31?w=600&q=80",
+    count: 248,
+  },
+  {
+    id: "screen-protectors",
+    name: "Screen Protectors",
+    slug: "screen-protectors",
+    description: "Crystal clear protection for your screen",
+    image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80",
+    count: 84,
+  },
+  {
+    id: "chargers",
+    name: "Chargers & Cables",
+    slug: "chargers-cables",
+    description: "Fast charging solutions for all devices",
+    image: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=600&q=80",
+    count: 132,
+  },
+  {
+    id: "wireless-charging",
+    name: "Wireless Charging",
+    slug: "wireless-charging",
+    description: "Cut the cord with wireless charging pads and stands",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    count: 56,
+  },
+  {
+    id: "headphones",
+    name: "Headphones & Earbuds",
+    slug: "headphones-earbuds",
+    description: "Immersive sound for music, calls, and more",
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80",
+    count: 73,
+  },
+  {
+    id: "power-banks",
+    name: "Power Banks",
+    slug: "power-banks",
+    description: "Never run out of battery on the go",
+    image: "https://images.unsplash.com/photo-1609592806156-4a95b2ad6e52?w=600&q=80",
+    count: 41,
+  },
+  {
+    id: "mounts-stands",
+    name: "Mounts & Stands",
+    slug: "mounts-stands",
+    description: "Keep your device in the perfect position",
+    image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&q=80",
+    count: 62,
+  },
+  {
+    id: "tablet-cases",
+    name: "Tablet Cases",
+    slug: "tablet-cases",
+    description: "Smart covers and cases for iPads and Android tablets",
+    image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&q=80",
+    count: 95,
+  },
+];
