@@ -27,12 +27,12 @@ export default function CheckoutPage() {
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
             <CheckCircle2 className="w-8 h-8 text-green-600" />
           </div>
-          <h1 className="text-2xl font-extrabold text-gray-900 mb-2">Order confirmed!</h1>
+          <h1 className="text-2xl font-extrabold text-gray-900 mb-2">Ordre bekræftet!</h1>
           <p className="text-gray-500 text-sm mb-6">
-            Thank you for your purchase. You&apos;ll receive a confirmation email shortly.
+            Tak for dit kob. Du vil snart modtage en bekræftelses-e-mail.
           </p>
           <Link href="/" className="btn-primary">
-            Back to shop
+            Tilbage til shoppen
           </Link>
         </div>
       </div>
@@ -43,8 +43,8 @@ export default function CheckoutPage() {
     return (
       <div className="min-h-[60vh] flex items-center justify-center px-4">
         <div className="text-center">
-          <p className="text-gray-500 mb-4">Your cart is empty.</p>
-          <Link href="/" className="btn-primary">Continue shopping</Link>
+          <p className="text-gray-500 mb-4">Din kurv er tom.</p>
+          <Link href="/" className="btn-primary">Fortsæt med at handle</Link>
         </div>
       </div>
     );
@@ -54,13 +54,13 @@ export default function CheckoutPage() {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
       {/* Steps breadcrumb */}
       <nav className="flex items-center gap-2 text-xs mb-8">
-        <Link href="/" className="text-gray-400 hover:text-gray-600">Cart</Link>
+        <Link href="/" className="text-gray-400 hover:text-gray-600">Kurv</Link>
         <ChevronRight className="w-3 h-3 text-gray-300" />
-        <span className={step === "info" ? "text-[#2563eb] font-bold" : "text-gray-400"}>Information</span>
+        <span className={step === "info" ? "text-[#2563eb] font-bold" : "text-gray-400"}>Oplysninger</span>
         <ChevronRight className="w-3 h-3 text-gray-300" />
-        <span className={step === "shipping" ? "text-[#2563eb] font-bold" : "text-gray-400"}>Shipping</span>
+        <span className={step === "shipping" ? "text-[#2563eb] font-bold" : "text-gray-400"}>Levering</span>
         <ChevronRight className="w-3 h-3 text-gray-300" />
-        <span className={step === "payment" ? "text-[#2563eb] font-bold" : "text-gray-400"}>Payment</span>
+        <span className={step === "payment" ? "text-[#2563eb] font-bold" : "text-gray-400"}>Betaling</span>
       </nav>
 
       <div className="grid lg:grid-cols-[1fr_380px] gap-10">
@@ -68,19 +68,19 @@ export default function CheckoutPage() {
         <div>
           {step === "info" && (
             <div className="space-y-5">
-              <h2 className="text-lg font-extrabold text-gray-900">Contact information</h2>
-              <Field label="Email" value={form.email} onChange={(v) => set("email", v)} type="email" placeholder="you@example.com" />
-              <Field label="Phone" value={form.phone} onChange={(v) => set("phone", v)} type="tel" placeholder="+45 00 00 00 00" />
-              <h2 className="text-lg font-extrabold text-gray-900 pt-2">Shipping address</h2>
+              <h2 className="text-lg font-extrabold text-gray-900">Kontaktoplysninger</h2>
+              <Field label="E-mail" value={form.email} onChange={(v) => set("email", v)} type="email" placeholder="dig@eksempel.dk" />
+              <Field label="Telefon" value={form.phone} onChange={(v) => set("phone", v)} type="tel" placeholder="+45 00 00 00 00" />
+              <h2 className="text-lg font-extrabold text-gray-900 pt-2">Leveringsadresse</h2>
               <div className="grid grid-cols-2 gap-4">
-                <Field label="First name" value={form.firstName} onChange={(v) => set("firstName", v)} placeholder="Lars" />
-                <Field label="Last name" value={form.lastName} onChange={(v) => set("lastName", v)} placeholder="Jensen" />
+                <Field label="Fornavn" value={form.firstName} onChange={(v) => set("firstName", v)} placeholder="Lars" />
+                <Field label="Efternavn" value={form.lastName} onChange={(v) => set("lastName", v)} placeholder="Jensen" />
               </div>
-              <Field label="Address" value={form.address} onChange={(v) => set("address", v)} placeholder="Vesterbrogade 1" />
+              <Field label="Adresse" value={form.address} onChange={(v) => set("address", v)} placeholder="Vesterbrogade 1" />
               <div className="grid grid-cols-3 gap-4">
-                <Field label="ZIP" value={form.zip} onChange={(v) => set("zip", v)} placeholder="1620" />
+                <Field label="Postnr." value={form.zip} onChange={(v) => set("zip", v)} placeholder="1620" />
                 <div className="col-span-2">
-                  <Field label="City" value={form.city} onChange={(v) => set("city", v)} placeholder="Copenhagen" />
+                  <Field label="By" value={form.city} onChange={(v) => set("city", v)} placeholder="Kobenhavn" />
                 </div>
               </div>
               <button
@@ -88,18 +88,18 @@ export default function CheckoutPage() {
                 disabled={!form.email || !form.firstName || !form.lastName || !form.address || !form.city || !form.zip}
                 className="btn-primary btn-primary-full py-3.5"
               >
-                Continue to shipping
+                Forsæt til levering
               </button>
             </div>
           )}
 
           {step === "shipping" && (
             <div className="space-y-5">
-              <h2 className="text-lg font-extrabold text-gray-900">Shipping method</h2>
+              <h2 className="text-lg font-extrabold text-gray-900">Leveringsmetode</h2>
               <div className="space-y-3">
                 {[
-                  { id: "std", label: "Standard Delivery", sub: "3-5 business days", price: shipping === 0 ? "Free" : formatPrice(49) },
-                  { id: "exp", label: "Express Delivery", sub: "1-2 business days", price: formatPrice(99) },
+                  { id: "std", label: "Standard levering", sub: "3-5 hverdage", price: shipping === 0 ? "Gratis" : formatPrice(49) },
+                  { id: "exp", label: "Ekspreslevering", sub: "1-2 hverdage", price: formatPrice(99) },
                 ].map((opt) => (
                   <label
                     key={opt.id}
@@ -115,8 +115,8 @@ export default function CheckoutPage() {
                 ))}
               </div>
               <div className="flex gap-3">
-                <button onClick={() => setStep("info")} className="btn-secondary flex-1 justify-center">Back</button>
-                <button onClick={() => setStep("payment")} className="btn-primary flex-1 justify-center py-3">Continue to payment</button>
+                <button onClick={() => setStep("info")} className="btn-secondary flex-1 justify-center">Tilbage</button>
+                <button onClick={() => setStep("payment")} className="btn-primary flex-1 justify-center py-3">Forsæt til betaling</button>
               </div>
             </div>
           )}
@@ -124,23 +124,23 @@ export default function CheckoutPage() {
           {step === "payment" && (
             <div className="space-y-5">
               <div className="flex items-center gap-2">
-                <h2 className="text-lg font-extrabold text-gray-900">Payment</h2>
+                <h2 className="text-lg font-extrabold text-gray-900">Betaling</h2>
                 <Lock className="w-4 h-4 text-gray-400" />
               </div>
-              <p className="text-xs text-gray-400">All transactions are encrypted and secure.</p>
-              <Field label="Card number" value={form.cardNumber} onChange={(v) => set("cardNumber", v)} placeholder="0000 0000 0000 0000" />
+              <p className="text-xs text-gray-400">Alle transaktioner er krypterede og sikre.</p>
+              <Field label="Kortnummer" value={form.cardNumber} onChange={(v) => set("cardNumber", v)} placeholder="0000 0000 0000 0000" />
               <div className="grid grid-cols-2 gap-4">
-                <Field label="Expiry date" value={form.cardExpiry} onChange={(v) => set("cardExpiry", v)} placeholder="MM / YY" />
+                <Field label="Udlobsdato" value={form.cardExpiry} onChange={(v) => set("cardExpiry", v)} placeholder="MM / AA" />
                 <Field label="CVC" value={form.cardCvc} onChange={(v) => set("cardCvc", v)} placeholder="000" />
               </div>
               <div className="flex gap-3 pt-2">
-                <button onClick={() => setStep("shipping")} className="btn-secondary flex-1 justify-center">Back</button>
+                <button onClick={() => setStep("shipping")} className="btn-secondary flex-1 justify-center">Tilbage</button>
                 <button
                   onClick={() => { clearCart(); setStep("done"); }}
                   disabled={!form.cardNumber || !form.cardExpiry || !form.cardCvc}
                   className="btn-primary flex-1 justify-center py-3"
                 >
-                  <Lock className="w-4 h-4" /> Pay {formatPrice(orderTotal)}
+                  <Lock className="w-4 h-4" /> Betal {formatPrice(orderTotal)}
                 </button>
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function CheckoutPage() {
         {/* Order summary */}
         <div>
           <div className="bg-gray-50 rounded-2xl p-6 sticky top-24 border border-gray-100">
-            <h3 className="text-sm font-extrabold text-gray-900 mb-4">Order summary</h3>
+            <h3 className="text-sm font-extrabold text-gray-900 mb-4">Ordreoversigt</h3>
             <div className="space-y-3 mb-4">
               {items.map((item) => (
                 <div key={`${item.product.id}-${item.variantId ?? ""}`} className="flex gap-3">
@@ -175,11 +175,11 @@ export default function CheckoutPage() {
                 <span>{formatPrice(total)}</span>
               </div>
               <div className="flex justify-between text-sm text-gray-500">
-                <span>Shipping</span>
-                <span>{shipping === 0 ? "Free" : formatPrice(shipping)}</span>
+                <span>Levering</span>
+                <span>{shipping === 0 ? "Gratis" : formatPrice(shipping)}</span>
               </div>
               <div className="flex justify-between text-base font-extrabold text-gray-900 pt-2 border-t border-gray-200">
-                <span>Total</span>
+                <span>I alt</span>
                 <span>{formatPrice(orderTotal)}</span>
               </div>
             </div>

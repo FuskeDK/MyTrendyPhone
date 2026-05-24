@@ -5,30 +5,30 @@ import { getFeaturedProducts, getNewArrivals, getSaleProducts } from "@/data/pro
 import ProductCard from "@/components/ProductCard";
 
 const perks = [
-  { icon: Truck, title: "Free shipping", sub: "On orders over 499 kr" },
-  { icon: RotateCcw, title: "30-day returns", sub: "No questions asked" },
-  { icon: Shield, title: "2-year warranty", sub: "On all products" },
-  { icon: Headphones, title: "Support 7 days", sub: "Chat, phone & email" },
+  { icon: Truck, title: "Gratis fragt", sub: "Ved kob over 499 kr" },
+  { icon: RotateCcw, title: "30 dages retur", sub: "Ingen begrundelse krævet" },
+  { icon: Shield, title: "2 ars garanti", sub: "Pa alle produkter" },
+  { icon: Headphones, title: "Support 7 dage", sub: "Chat, telefon og e-mail" },
 ];
 
 const heroProducts = [
   {
-    label: "Phone Cases",
+    label: "Mobilcovers",
     img: "https://images.unsplash.com/photo-1601972599720-36938d4ecd31?w=400&q=80",
     href: "/category/phone-cases",
   },
   {
-    label: "Headphones",
+    label: "Hovedtelefoner",
     img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80",
     href: "/category/headphones-earbuds",
   },
   {
-    label: "Chargers",
-    img: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&q=80",
+    label: "Opladere",
+    img: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=80",
     href: "/category/chargers-cables",
   },
   {
-    label: "Wireless",
+    label: "Tradlos opladning",
     img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80",
     href: "/category/wireless-charging",
   },
@@ -42,42 +42,39 @@ export default function HomePage() {
   return (
     <div>
       {/* ── Hero ── */}
-      <section className="bg-[#0a0a0a] text-white">
+      <section className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20 grid md:grid-cols-[1fr_auto] gap-10 items-center">
           {/* Left */}
           <div className="max-w-lg">
-            <p className="text-[#2563eb] text-xs font-bold uppercase tracking-[0.2em] mb-4">
-              Denmark&rsquo;s #1 phone accessory store
-            </p>
-            <h1 className="text-4xl md:text-[52px] font-extrabold leading-[1.1] tracking-tight mb-5">
-              Everything your<br />
-              <span className="text-[#2563eb]">phone needs.</span>
+            <h1 className="text-4xl md:text-[52px] font-extrabold leading-[1.1] tracking-tight mb-5 text-gray-900">
+              Alt hvad din<br />
+              <span className="text-[#2563eb]">telefon har brug for.</span>
             </h1>
-            <p className="text-[#999] text-base leading-relaxed mb-8">
-              Cases, chargers, headphones and more — 700+ products from Apple, Samsung, Spigen, Anker and other top brands. Fast delivery across Denmark.
+            <p className="text-gray-500 text-base leading-relaxed mb-8">
+              Covers, opladere, hovedtelefoner og meget mere - 700+ produkter fra Apple, Samsung, Spigen, Anker og andre topbrands. Hurtig levering over hele Danmark.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/category/phone-cases" className="btn-primary">
-                Shop now <ArrowRight className="w-4 h-4" />
+                Shop nu <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/category/headphones-earbuds" className="btn-secondary" style={{ background: "transparent", color: "#fff", borderColor: "#333" }}>
-                Browse all categories
+              <Link href="/category/headphones-earbuds" className="btn-secondary">
+                Se alle kategorier
               </Link>
             </div>
           </div>
 
-          {/* Right – 2×2 product grid */}
+          {/* Right - 2x2 product grid */}
           <div className="hidden md:grid grid-cols-2 gap-3 w-[360px] shrink-0">
             {heroProducts.map((p) => (
               <Link
                 key={p.label}
                 href={p.href}
-                className="group relative rounded-xl overflow-hidden aspect-square bg-[#111]"
+                className="group relative rounded-xl overflow-hidden aspect-square bg-gray-100"
               >
                 <img
                   src={p.img}
                   alt={p.label}
-                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <span className="absolute bottom-2.5 left-3 text-white text-xs font-bold">{p.label}</span>
@@ -107,8 +104,8 @@ export default function HomePage() {
       {/* ── Categories ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
         <div className="mb-8">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">Shop by category</h2>
-          <p className="text-sm text-gray-400 mt-1">Find exactly what you&rsquo;re looking for</p>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">Shop efter kategori</h2>
+          <p className="text-sm text-gray-400 mt-1">Find præcis det du leder efter</p>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {categories.map((cat) => (
@@ -125,7 +122,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <p className="text-white font-bold text-sm leading-snug">{cat.name}</p>
-                <p className="text-gray-300 text-xs mt-0.5">{cat.count} products</p>
+                <p className="text-gray-300 text-xs mt-0.5">{cat.count} produkter</p>
               </div>
             </Link>
           ))}
@@ -137,11 +134,11 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-end justify-between mb-8">
             <div>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">Best sellers</h2>
-              <p className="text-sm text-gray-400 mt-1">Our most loved products</p>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">Bestsellere</h2>
+              <p className="text-sm text-gray-400 mt-1">Vores mest populære produkter</p>
             </div>
             <Link href="/category/phone-cases" className="btn-secondary text-xs">
-              View all <ArrowRight className="w-3.5 h-3.5" />
+              Se alle <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -160,14 +157,14 @@ export default function HomePage() {
             className="group relative rounded-2xl overflow-hidden bg-[#0a0a0a] p-8 min-h-52 flex flex-col justify-between border border-gray-100"
           >
             <div>
-              <span className="text-[#2563eb] text-xs font-bold uppercase tracking-widest">Featured</span>
+              <span className="text-[#2563eb] text-xs font-bold uppercase tracking-widest">Udvalgt</span>
               <h3 className="text-white text-2xl font-extrabold mt-2 leading-tight">
-                Go wireless.<br />Charge faster.
+                Oplad tradlost.<br />Oplad hurtigere.
               </h3>
-              <p className="text-gray-400 text-sm mt-2">MagSafe &amp; Qi2 up to 15W</p>
+              <p className="text-gray-400 text-sm mt-2">MagSafe og Qi2 op til 15W</p>
             </div>
             <span className="btn-primary mt-4 self-start">
-              Shop charging <ArrowRight className="w-4 h-4" />
+              Shop opladere <ArrowRight className="w-4 h-4" />
             </span>
             <img
               src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
@@ -180,14 +177,14 @@ export default function HomePage() {
             className="group relative rounded-2xl overflow-hidden bg-[#f5f5f5] p-8 min-h-52 flex flex-col justify-between border border-gray-100"
           >
             <div>
-              <span className="text-gray-500 text-xs font-bold uppercase tracking-widest">Premium audio</span>
+              <span className="text-gray-500 text-xs font-bold uppercase tracking-widest">Premium lyd</span>
               <h3 className="text-gray-900 text-2xl font-extrabold mt-2 leading-tight">
-                Hear every<br />detail.
+                Hor hvert<br />eneste detalje.
               </h3>
-              <p className="text-gray-400 text-sm mt-2">Sony, Apple, Samsung &amp; more</p>
+              <p className="text-gray-400 text-sm mt-2">Sony, Apple, Samsung og meget mere</p>
             </div>
             <span className="btn-primary mt-4 self-start">
-              Shop headphones <ArrowRight className="w-4 h-4" />
+              Shop hovedtelefoner <ArrowRight className="w-4 h-4" />
             </span>
             <img
               src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80"
@@ -202,8 +199,8 @@ export default function HomePage() {
       <section className="bg-gray-50 py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-8">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">New arrivals</h2>
-            <p className="text-sm text-gray-400 mt-1">Just landed in our store</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">Nyheder</h2>
+            <p className="text-sm text-gray-400 mt-1">Nye varer i butikken</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {newArrivals.map((p) => (
@@ -217,10 +214,10 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
         <div className="mb-8">
           <span className="inline-block bg-red-500 text-white text-xs font-bold px-2.5 py-0.5 rounded-md uppercase tracking-wide mb-2">
-            Sale
+            Tilbud
           </span>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">On sale now</h2>
-          <p className="text-sm text-gray-400 mt-1">Limited time deals</p>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">Pa tilbud nu</h2>
+          <p className="text-sm text-gray-400 mt-1">Tidsbegrænsede tilbud</p>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {sale.map((p) => (
@@ -233,7 +230,7 @@ export default function HomePage() {
       <section className="border-t border-gray-100 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-8">
-            Official reseller of top brands
+            Officiel forhandler af topbrands
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14">
             {["Apple", "Samsung", "Spigen", "Anker", "Sony", "Belkin", "Mujjo", "Otterbox"].map((brand) => (

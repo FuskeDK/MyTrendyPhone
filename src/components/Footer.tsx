@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="col-span-2 md:col-span-1">
           <img src="/logo.png" alt="MyTrendyPhone" className="h-8 w-auto mb-1 invert opacity-90" />
           <p className="text-sm text-gray-400 leading-relaxed mb-5">
-            Denmark&rsquo;s largest selection of phone accessories. Premium brands, fast delivery, easy returns.
+            Danmarks storste udvalg af mobiltilbehor. Premium brands, hurtig levering, nem returret.
           </p>
           <div className="flex gap-3">
             {[Globe, Mail, Share2].map((Icon, i) => (
@@ -24,9 +24,9 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Products</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Produkter</p>
           <ul className="space-y-2.5">
-            {["Phone Cases", "Screen Protectors", "Chargers & Cables", "Wireless Charging", "Headphones", "Power Banks"].map((item) => (
+            {["Mobilcovers", "Skærmskånere", "Opladere og kabler", "Tradlos opladning", "Hovedtelefoner", "Powerbanks"].map((item) => (
               <li key={item}>
                 <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
                   {item}
@@ -52,7 +52,7 @@ export default function Footer() {
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Support</p>
           <ul className="space-y-2.5">
-            {["Shipping Info", "Returns & Exchanges", "Track Your Order", "FAQ", "Contact Us", "Privacy Policy"].map((item) => (
+            {["Leveringsinformation", "Retur og ombytning", "Spor din ordre", "FAQ", "Kontakt os", "Privatlivspolitik"].map((item) => (
               <li key={item}>
                 <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
                   {item}
@@ -66,7 +66,7 @@ export default function Footer() {
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-wrap items-center justify-between gap-3">
           <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} MyTrendyPhone. All rights reserved.
+            &copy; {new Date().getFullYear()} MyTrendyPhone. Alle rettigheder forbeholdes.
           </p>
           <div className="flex items-center gap-4">
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" className="h-5 opacity-60" />

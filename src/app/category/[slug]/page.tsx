@@ -28,7 +28,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-16">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <Link href="/" className="hover:text-white transition-colors">Forside</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-white">{category.name}</span>
           </nav>
@@ -42,16 +42,16 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         <div className="flex items-center justify-between mb-6">
           <p className="text-sm text-gray-400">
             {products.length > 0
-              ? `${products.length} products`
-              : "No products in this category yet"}
+              ? `${products.length} produkter`
+              : "Ingen produkter i denne kategori endnu"}
           </p>
         </div>
 
         {products.length === 0 ? (
           <div className="py-24 text-center">
-            <p className="text-gray-400 mb-4">No products found in this category.</p>
+            <p className="text-gray-400 mb-4">Ingen produkter fundet i denne kategori.</p>
             <Link href="/" className="btn-primary">
-              Back to homepage
+              Tilbage til forsiden
             </Link>
           </div>
         ) : (
@@ -66,7 +66,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       {/* Other categories */}
       <section className="border-t border-gray-100 py-10 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="text-sm font-semibold text-gray-500 mb-4">Other categories</p>
+          <p className="text-sm font-semibold text-gray-500 mb-4">Andre kategorier</p>
           <div className="flex flex-wrap gap-2">
             {categories
               .filter((c) => c.id !== category.id)

@@ -26,7 +26,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-8">
-          <Link href="/" className="hover:text-gray-700 transition-colors">Home</Link>
+          <Link href="/" className="hover:text-gray-700 transition-colors">Forside</Link>
           <ChevronRight className="w-3 h-3" />
           {category && (
             <>
@@ -93,7 +93,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
               <span className="text-sm font-semibold text-gray-700">{product.rating}</span>
               <span className="text-sm text-gray-400">
-                ({product.reviewCount.toLocaleString()} reviews)
+                ({product.reviewCount.toLocaleString()} anmeldelser)
               </span>
             </div>
 
@@ -118,7 +118,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {product.compatibleWith && product.compatibleWith.length > 0 && (
               <div className="mb-5">
                 <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">
-                  Compatible with
+                  Kompatibel med
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {product.compatibleWith.map((device) => (
@@ -137,7 +137,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {product.variants && product.variants.some((v) => v.color) && (
               <div className="mb-5">
                 <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
-                  Color
+                  Farve
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {product.variants.map((v) => (
@@ -156,7 +156,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {product.variants && product.variants.some((v) => v.label && !v.color) && (
               <div className="mb-5">
                 <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
-                  Pack size
+                  Pakkestrrelse
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {product.variants.map((v, i) => (
@@ -177,9 +177,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {/* Trust badges */}
             <div className="grid grid-cols-3 gap-3 mt-5 pt-5 border-t border-gray-100">
               {[
-                { icon: Truck, label: "Free shipping", sub: "Over 499 kr" },
-                { icon: RotateCcw, label: "30-day return", sub: "Easy returns" },
-                { icon: Shield, label: "2-year warranty", sub: "Guaranteed" },
+                { icon: Truck, label: "Gratis fragt", sub: "Over 499 kr" },
+                { icon: RotateCcw, label: "30 dages retur", sub: "Nem returret" },
+                { icon: Shield, label: "2 ars garanti", sub: "Garanteret" },
               ].map(({ icon: Icon, label, sub }) => (
                 <div key={label} className="flex flex-col items-center text-center gap-1.5">
                   <Icon className="w-4.5 h-4.5 text-blue-600" />
@@ -194,12 +194,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         {/* Description & features */}
         <div className="grid md:grid-cols-2 gap-10 mt-14 pt-14 border-t border-gray-100">
           <div>
-            <h2 className="text-lg font-bold text-gray-900 mb-3">About this product</h2>
+            <h2 className="text-lg font-bold text-gray-900 mb-3">Om dette produkt</h2>
             <p className="text-sm text-gray-600 leading-relaxed">{product.description}</p>
           </div>
           {product.features && product.features.length > 0 && (
             <div>
-              <h2 className="text-lg font-bold text-gray-900 mb-3">Key features</h2>
+              <h2 className="text-lg font-bold text-gray-900 mb-3">Specifikationer</h2>
               <ul className="space-y-2.5">
                 {product.features.map((f) => (
                   <li key={f} className="flex items-center gap-2.5 text-sm text-gray-700">
@@ -219,7 +219,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       {related.length > 0 && (
         <section className="bg-gray-50 mt-14 py-14">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <h2 className="text-xl font-extrabold text-gray-900 mb-6">You might also like</h2>
+            <h2 className="text-xl font-extrabold text-gray-900 mb-6">Du vil mske ogs synes om</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {related.map((p) => (
                 <ProductCard key={p.id} product={p} />

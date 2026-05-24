@@ -22,9 +22,9 @@ export default function AddToCartButton({ product }: { product: Product }) {
       }`}
     >
       {added ? (
-        <><Check className="w-4 h-4" /> Added to cart</>
+        <><Check className="w-4 h-4" /> Tilfojet i kurven</>
       ) : (
-        <><ShoppingCart className="w-4 h-4" /> Add to cart</>
+        <><ShoppingCart className="w-4 h-4" /> Tilfo til kurven</>
       )}
     </button>
   );

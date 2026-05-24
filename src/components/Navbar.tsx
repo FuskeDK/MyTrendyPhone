@@ -39,7 +39,7 @@ export default function Navbar() {
     <>
       {/* Announcement bar */}
       <div className="bg-gray-900 text-white text-xs text-center py-2 px-4 font-medium tracking-wide">
-        Free shipping on orders over 499 kr · Easy 30-day returns
+        Gratis fragt ved kob over 499 kr · Nem 30-dages returret
       </div>
 
       <header
@@ -50,7 +50,7 @@ export default function Navbar() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center mr-4 shrink-0">
-            <img src="/logo.png" alt="MyTrendyPhone" className="h-8 w-auto" />
+            <img src="/logo.png" alt="MyTrendyPhone" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop nav */}
@@ -61,7 +61,7 @@ export default function Navbar() {
               onMouseLeave={() => setCategoriesOpen(false)}
             >
               <button className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors py-6">
-                Categories <ChevronDown className="w-3.5 h-3.5" />
+                Kategorier <ChevronDown className="w-3.5 h-3.5" />
               </button>
               {categoriesOpen && (
                 <div className="absolute top-full left-0 bg-white border border-gray-100 rounded-xl shadow-xl p-4 w-64 grid grid-cols-1 gap-0.5 z-50">
@@ -84,19 +84,19 @@ export default function Navbar() {
               href="/category/phone-cases"
               className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
             >
-              Phone Cases
+              Mobilcovers
             </Link>
             <Link
               href="/category/chargers-cables"
               className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
             >
-              Chargers
+              Opladere
             </Link>
             <Link
               href="/category/headphones-earbuds"
               className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
             >
-              Headphones
+              Hovedtelefoner
             </Link>
           </div>
 
@@ -121,7 +121,7 @@ export default function Navbar() {
                       autoFocus
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Search products…"
+                      placeholder="Sog produkter..."
                       className="flex-1 text-sm text-gray-900 placeholder:text-gray-400 outline-none"
                     />
                     {searchQuery && (
@@ -168,7 +168,7 @@ export default function Navbar() {
                   )}
                   {searchQuery.length > 1 && results.length === 0 && (
                     <p className="px-4 py-5 text-sm text-gray-400 text-center">
-                      No results for &ldquo;{searchQuery}&rdquo;
+                      Ingen resultater for &ldquo;{searchQuery}&rdquo;
                     </p>
                   )}
                 </div>

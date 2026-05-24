@@ -26,7 +26,7 @@ export default function CartDrawer() {
           <div className="flex items-center gap-2">
             <ShoppingBag className="w-4 h-4 text-gray-600" />
             <h2 className="text-base font-extrabold text-gray-900">
-              Cart {count > 0 && <span className="text-gray-400 font-normal">({count})</span>}
+              Kurv {count > 0 && <span className="text-gray-400 font-normal">({count})</span>}
             </h2>
           </div>
           <button
@@ -44,11 +44,11 @@ export default function CartDrawer() {
               <ShoppingBag className="w-7 h-7 text-gray-400" />
             </div>
             <div>
-              <p className="font-extrabold text-gray-900 mb-1">Your cart is empty</p>
-              <p className="text-sm text-gray-400">Add some products to get started</p>
+              <p className="font-extrabold text-gray-900 mb-1">Din kurv er tom</p>
+              <p className="text-sm text-gray-400">Tilfo produkter for at komme i gang</p>
             </div>
             <button onClick={closeCart} className="btn-primary mt-2">
-              Continue shopping
+              Fortsæt med at handle
             </button>
           </div>
         ) : (
@@ -116,11 +116,11 @@ export default function CartDrawer() {
             <div className="border-t border-gray-100 px-6 py-5 space-y-3">
               {total >= 499 ? (
                 <p className="text-xs text-green-600 font-bold text-center">
-                  You qualify for free shipping!
+                  Du har kvalificeret dig til gratis fragt!
                 </p>
               ) : (
                 <p className="text-xs text-gray-400 text-center">
-                  Add {formatPrice(499 - total)} more for free shipping
+                  Tilfo {formatPrice(499 - total)} mere for gratis fragt
                 </p>
               )}
               <div className="flex items-center justify-between">
@@ -132,13 +132,13 @@ export default function CartDrawer() {
                 onClick={closeCart}
                 className="btn-primary btn-primary-full"
               >
-                Checkout
+                Ga til kassen
               </Link>
               <button
                 onClick={closeCart}
                 className="btn-secondary btn-secondary-full"
               >
-                Continue shopping
+                Fortsæt med at handle
               </button>
             </div>
           </>
