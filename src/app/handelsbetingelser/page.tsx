@@ -17,7 +17,7 @@ export default function HandelsbetingelserPage() {
 
         <section>
           <h2 className="text-base font-bold text-gray-900 mb-3">3. Levering</h2>
-          <p>Vi leverer til hele Danmark. Forventet leveringstid er 1–3 hverdage. Gratis fragt ved køb over 499 kr. Ved køb under 499 kr. pålægges et fragtgebyr. Vi sender med GLS og PostNord.</p>
+          <p>Vi leverer til hele Danmark. Ordrer bestilt mandag-lørdag inden kl. 22:00 og søndag inden kl. 13:00 afsendes samme dag. Forventet leveringstid er 1-3 hverdage. Fragtgebyr pålægges ved kassen afhængigt af leveringsmetode. Vi sender med Bring, DAO og GLS.</p>
         </section>
 
         <section>
@@ -39,7 +39,7 @@ export default function HandelsbetingelserPage() {
         <section>
           <h2 className="text-base font-bold text-gray-900 mb-3">7. Kontakt</h2>
           <p>Har du spørgsmål til dine køb eller disse betingelser, er du velkommen til at kontakte os:</p>
-          <p className="mt-2">E-mail: support@mytrendyphone.dk<br />Telefon: +45 12 34 56 78</p>
+          <p className="mt-2">E-mail: support@mytrendyphone.dk<br />Telefon: +45 78 76 94 94 (man-fre 10-15)<br />Mtp.dk ApS - CVR 37860220<br />Karlebovej 59, 3400 Hillerød</p>
         </section>
       </div>
     </div>

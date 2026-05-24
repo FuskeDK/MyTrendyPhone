@@ -1,4 +1,4 @@
-import { Mail, Phone, Clock } from "lucide-react";
+import { Mail, Phone, Clock, MapPin } from "lucide-react";
 
 export default function ContactPage() {
   return (
@@ -6,11 +6,12 @@ export default function ContactPage() {
       <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Kontakt os</h1>
       <p className="text-gray-400 mb-12">Vi er klar til at hjælpe dig. Ræk ud til os via en af nedenstående kanaler.</p>
 
-      <div className="grid sm:grid-cols-3 gap-6 mb-14">
+      <div className="grid sm:grid-cols-2 gap-6 mb-14">
         {[
           { icon: Mail, title: "E-mail", value: "support@mytrendyphone.dk", sub: "Svar inden for 24 timer" },
-          { icon: Phone, title: "Telefon", value: "+45 12 34 56 78", sub: "Man–fre 9–17" },
-          { icon: Clock, title: "Åbningstider", value: "Man–fre 9–17", sub: "Lørdag 10–14" },
+          { icon: Phone, title: "Telefon", value: "+45 78 76 94 94", sub: "Man-fre 10-15" },
+          { icon: Clock, title: "Åbningstider", value: "Chat: alle dage 8-22", sub: "Telefon: man-fre 10-15" },
+          { icon: MapPin, title: "Adresse", value: "Karlebovej 59, 3400 Hillerød", sub: "Mtp.dk ApS - CVR 37860220" },
         ].map(({ icon: Icon, title, value, sub }) => (
           <div key={title} className="bg-gray-50 rounded-2xl p-6">
             <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
