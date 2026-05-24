@@ -39,7 +39,7 @@ export default function Navbar() {
     <>
       {/* Announcement bar */}
       <div className="bg-gray-900 text-white text-xs text-center py-2 px-4 font-medium tracking-wide">
-        Gratis fragt ved kob over 499 kr · Nem 30-dages returret
+        Gratis fragt ved køb over 499 kr · Nem 30-dages returret
       </div>
 
       <header
@@ -121,7 +121,7 @@ export default function Navbar() {
                       autoFocus
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Sog produkter..."
+                      placeholder="Søg produkter..."
                       className="flex-1 text-sm text-gray-900 placeholder:text-gray-400 outline-none"
                     />
                     {searchQuery && (

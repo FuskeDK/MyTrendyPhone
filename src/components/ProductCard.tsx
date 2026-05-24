@@ -44,7 +44,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <button
         onClick={() => addItem(product)}
         className="absolute bottom-[88px] right-3 w-9 h-9 bg-white border-[1.5px] border-gray-200 rounded-lg flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-200 hover:bg-[#2563eb] hover:border-[#2563eb] hover:text-white text-gray-600"
-        aria-label="Tilfo til kurven"
+        aria-label="Tilføj til kurven"
       >
         <ShoppingCart className="w-4 h-4" />
       </button>

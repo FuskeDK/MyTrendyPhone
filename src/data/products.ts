@@ -24,7 +24,7 @@ export const products: Product[] = [
       { id: "v3", color: "Midnight Blue", colorHex: "#1e3a5f", stock: 6 },
     ],
     badge: "sale",
-    features: ["MagSafe-kompatibel", "Militærklasse faldsbeskyttelse", "Anti-gulning-coating", "Kompatibel med tradlos opladning"],
+    features: ["MagSafe-kompatibel", "Militærklasse faldsbeskyttelse", "Anti-gulning-coating", "Kompatibel med trådløs opladning"],
   },
   {
     id: "p2",
@@ -68,7 +68,7 @@ export const products: Product[] = [
       { id: "v2", color: "Metal Slate", colorHex: "#4a5568", stock: 22 },
     ],
     badge: "popular",
-    features: ["Air Cushion Technology", "Dobbeltlags beskyttelse", "Kickstand inkluderet", "Kompatibel med tradlos opladning"],
+    features: ["Air Cushion Technology", "Dobbeltlags beskyttelse", "Kickstand inkluderet", "Kompatibel med trådløs opladning"],
   },
   {
     id: "p4",
@@ -90,7 +90,7 @@ export const products: Product[] = [
       { id: "v3", color: "Porcelain", colorHex: "#f5f0eb", stock: 18 },
       { id: "v4", color: "Rose Quartz", colorHex: "#e8b4b8", stock: 9 },
     ],
-    features: ["Farvestoffrit silikon", "Blod mikrofiberforing", "Præcise udskæringer", "Kompatibel med tradlos opladning"],
+    features: ["Farvestoffrit silikon", "Blod mikrofiberforing", "Præcise udskæringer", "Kompatibel med trådløs opladning"],
   },
   {
     id: "p5",
@@ -198,7 +198,7 @@ export const products: Product[] = [
     categoryId: "chargers",
     brand: "Apple",
     compatibleWith: ["iPhone 12 og nyere"],
-    description: "Officiel Apple MagSafe-oplader med 2 meter kabel. Klikker magnetisk på for perfekt justering hver gang. Oplader op til 15W for lynhurtig tradlos opladning.",
+    description: "Officiel Apple MagSafe-oplader med 2 meter kabel. Klikker magnetisk på for perfekt justering hver gang. Oplader op til 15W for lynhurtig trådløs opladning.",
     price: 349,
     rating: 4.7,
     reviewCount: 8934,
@@ -228,7 +228,7 @@ export const products: Product[] = [
     features: ["Apple MFi-certificeret", "30W opladningsstotte", "Nylonflættet", "1m og 2m tilgængelig"],
   },
 
-  // ── Tradlos opladning ────────────────────────────────────────────────────────
+  // ── Trådløs opladning ────────────────────────────────────────────────────────
   {
     id: "p12",
     name: "3-i-1 MagSafe Opladningsstation",
@@ -248,11 +248,11 @@ export const products: Product[] = [
   },
   {
     id: "p13",
-    name: "Qi2 Tradlos Opladepude 15W",
+    name: "Qi2 Trådløs Opladepude 15W",
     slug: "qi2-wireless-charging-pad-15w",
     categoryId: "wireless-charging",
     brand: "Anker",
-    description: "Næste generation Qi2-standard for 15W hurtig tradlos opladning. Kompatibel med alle Qi og Qi2-enheder. Inkluderer skridsikker bund og LED-indikator for opladningsstatus.",
+    description: "Næste generation Qi2-standard for 15W hurtig trådløs opladning. Kompatibel med alle Qi og Qi2-enheder. Inkluderer skridsikker bund og LED-indikator for opladningsstatus.",
     price: 249,
     rating: 4.5,
     reviewCount: 892,
@@ -347,7 +347,7 @@ export const products: Product[] = [
     categoryId: "power-banks",
     brand: "Anker",
     compatibleWith: ["iPhone 12 og nyere"],
-    description: "Fastgøres magnetisk til din iPhone for opladning pa farten uden kabler. Foldbar stand til opladning i liggende stilling mens du ser film eller videoer.",
+    description: "Fastgøres magnetisk til din iPhone for opladning på farten uden kabler. Foldbar stand til opladning i liggende stilling mens du ser film eller videoer.",
     price: 399,
     rating: 4.5,
     reviewCount: 1892,

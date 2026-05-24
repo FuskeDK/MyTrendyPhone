@@ -45,7 +45,7 @@ export default function CartDrawer() {
             </div>
             <div>
               <p className="font-extrabold text-gray-900 mb-1">Din kurv er tom</p>
-              <p className="text-sm text-gray-400">Tilfo produkter for at komme i gang</p>
+              <p className="text-sm text-gray-400">Tilføj produkter for at komme i gang</p>
             </div>
             <button onClick={closeCart} className="btn-primary mt-2">
               Fortsæt med at handle
@@ -120,7 +120,7 @@ export default function CartDrawer() {
                 </p>
               ) : (
                 <p className="text-xs text-gray-400 text-center">
-                  Tilfo {formatPrice(499 - total)} mere for gratis fragt
+                  Tilføj {formatPrice(499 - total)} mere for gratis fragt
                 </p>
               )}
               <div className="flex items-center justify-between">

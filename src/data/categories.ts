@@ -27,7 +27,7 @@ export const categories: Category[] = [
   },
   {
     id: "wireless-charging",
-    name: "Tradlos opladning",
+    name: "Trådløs opladning",
     slug: "wireless-charging",
     description: "Oplad uden ledning med MagSafe og Qi2",
     image: "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?w=600&q=80",
@@ -45,7 +45,7 @@ export const categories: Category[] = [
     id: "power-banks",
     name: "Powerbanks",
     slug: "power-banks",
-    description: "Aldrig mere tomt for strom pa farten",
+    description: "Aldrig mere tomt for strøm på farten",
     image: "https://images.unsplash.com/photo-1566554738544-d962991c3fee?w=600&q=80",
     count: 41,
   },

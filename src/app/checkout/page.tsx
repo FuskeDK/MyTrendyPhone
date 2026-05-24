@@ -31,7 +31,7 @@ export default function CheckoutPage() {
           </div>
           <h1 className="text-2xl font-extrabold text-gray-900 mb-2">Ordre bekræftet!</h1>
           <p className="text-gray-500 text-sm mb-6">
-            Tak for dit kob. Du vil snart modtage en bekræftelses-e-mail.
+            Tak for dit køb. Du vil snart modtage en bekræftelses-e-mail.
           </p>
           <Link href="/" className="btn-primary">
             Tilbage til shoppen
@@ -82,7 +82,7 @@ export default function CheckoutPage() {
               <div className="grid grid-cols-3 gap-4">
                 <Field label="Postnr." value={form.zip} onChange={(v) => set("zip", v)} placeholder="1620" />
                 <div className="col-span-2">
-                  <Field label="By" value={form.city} onChange={(v) => set("city", v)} placeholder="Kobenhavn" />
+                  <Field label="By" value={form.city} onChange={(v) => set("city", v)} placeholder="København" />
                 </div>
               </div>
               <button
@@ -90,7 +90,7 @@ export default function CheckoutPage() {
                 disabled={!form.email || !form.firstName || !form.lastName || !form.address || !form.city || !form.zip}
                 className="btn-primary btn-primary-full py-3.5"
               >
-                Forsæt til levering
+                Fortsæt til levering
               </button>
             </div>
           )}
@@ -118,7 +118,7 @@ export default function CheckoutPage() {
               </div>
               <div className="flex gap-3">
                 <button onClick={() => setStep("info")} className="btn-secondary flex-1 justify-center">Tilbage</button>
-                <button onClick={() => setStep("payment")} className="btn-primary flex-1 justify-center py-3">Forsæt til betaling</button>
+                <button onClick={() => setStep("payment")} className="btn-primary flex-1 justify-center py-3">Fortsæt til betaling</button>
               </div>
             </div>
           )}
@@ -132,7 +132,7 @@ export default function CheckoutPage() {
               <p className="text-xs text-gray-400">Alle transaktioner er krypterede og sikre.</p>
               <Field label="Kortnummer" value={form.cardNumber} onChange={(v) => set("cardNumber", v)} placeholder="0000 0000 0000 0000" />
               <div className="grid grid-cols-2 gap-4">
-                <Field label="Udlobsdato" value={form.cardExpiry} onChange={(v) => set("cardExpiry", v)} placeholder="MM / AA" />
+                <Field label="Udløbsdato" value={form.cardExpiry} onChange={(v) => set("cardExpiry", v)} placeholder="MM / AA" />
                 <Field label="CVC" value={form.cardCvc} onChange={(v) => set("cardCvc", v)} placeholder="000" />
               </div>
               <div className="flex gap-3 pt-2">
