@@ -1,14 +1,35 @@
 import Link from "next/link";
 import { Globe, Mail, Share2 } from "lucide-react";
 
+const productLinks = [
+  { label: "Mobilcovers", href: "/category/phone-cases" },
+  { label: "Skærmskånere", href: "/category/screen-protectors" },
+  { label: "Opladere og kabler", href: "/category/chargers-cables" },
+  { label: "Trådløs opladning", href: "/category/wireless-charging" },
+  { label: "Hovedtelefoner", href: "/category/headphones-earbuds" },
+  { label: "Powerbanks", href: "/category/power-banks" },
+];
+
+const supportLinks = [
+  { label: "Kontakt os", href: "/contact" },
+  { label: "Handelsbetingelser", href: "/handelsbetingelser" },
+  { label: "Privatlivspolitik", href: "/privatlivspolitik" },
+  { label: "Leveringsinformation", href: "/handelsbetingelser" },
+  { label: "Retur og ombytning", href: "/handelsbetingelser" },
+];
+
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid grid-cols-2 md:grid-cols-4 gap-10">
         <div className="col-span-2 md:col-span-1">
-          <img src="/logo.png" alt="MyTrendyPhone" className="h-8 w-auto mb-1 invert opacity-90" />
+          <img
+            src="/logo.png"
+            alt="MyTrendyPhone"
+            className="h-12 w-auto mb-4 brightness-0 invert"
+          />
           <p className="text-sm text-gray-400 leading-relaxed mb-5">
-            Danmarks storste udvalg af mobiltilbehor. Premium brands, hurtig levering, nem returret.
+            Danmarks største udvalg af mobiltilbehør. Premium brands, hurtig levering, nem returret.
           </p>
           <div className="flex gap-3">
             {[Globe, Mail, Share2].map((Icon, i) => (
@@ -26,10 +47,10 @@ export default function Footer() {
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Produkter</p>
           <ul className="space-y-2.5">
-            {["Mobilcovers", "Skærmskånere", "Opladere og kabler", "Tradlos opladning", "Hovedtelefoner", "Powerbanks"].map((item) => (
-              <li key={item}>
-                <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  {item}
+            {productLinks.map(({ label, href }) => (
+              <li key={label}>
+                <Link href={href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                  {label}
                 </Link>
               </li>
             ))}
@@ -41,9 +62,7 @@ export default function Footer() {
           <ul className="space-y-2.5">
             {["Apple", "Samsung", "Spigen", "Anker", "Sony", "Belkin", "Mujjo", "Otterbox"].map((item) => (
               <li key={item}>
-                <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  {item}
-                </Link>
+                <span className="text-sm text-gray-400">{item}</span>
               </li>
             ))}
           </ul>
@@ -52,10 +71,10 @@ export default function Footer() {
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-4">Support</p>
           <ul className="space-y-2.5">
-            {["Leveringsinformation", "Retur og ombytning", "Spor din ordre", "FAQ", "Kontakt os", "Privatlivspolitik"].map((item) => (
-              <li key={item}>
-                <Link href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  {item}
+            {supportLinks.map(({ label, href }) => (
+              <li key={label}>
+                <Link href={href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                  {label}
                 </Link>
               </li>
             ))}
@@ -68,10 +87,20 @@ export default function Footer() {
           <p className="text-xs text-gray-500">
             &copy; {new Date().getFullYear()} MyTrendyPhone. Alle rettigheder forbeholdes.
           </p>
-          <div className="flex items-center gap-4">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" className="h-5 opacity-60" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-5 opacity-60" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-5 opacity-60" />
+          <div className="flex items-center gap-2">
+            {[
+              { label: "VISA", bg: "#1A1F71", color: "#fff" },
+              { label: "MC", bg: "#252525", color: "#fff" },
+              { label: "PayPal", bg: "#003087", color: "#fff" },
+            ].map(({ label, bg, color }) => (
+              <span
+                key={label}
+                className="px-2.5 py-1 text-[11px] font-extrabold rounded tracking-wide"
+                style={{ background: bg, color }}
+              >
+                {label}
+              </span>
+            ))}
           </div>
         </div>
       </div>

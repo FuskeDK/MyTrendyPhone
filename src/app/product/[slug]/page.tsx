@@ -6,6 +6,10 @@ import { categories } from "@/data/categories";
 import { formatPrice, discountPercent } from "@/lib/utils";
 import ProductCard from "@/components/ProductCard";
 import AddToCartButton from "@/components/AddToCartButton";
+import { fetchDbProducts, dbToProduct } from "@/lib/dbProducts";
+
+export const dynamicParams = true;
+export const revalidate = 60;
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -13,12 +17,25 @@ export function generateStaticParams() {
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const product = products.find((p) => p.slug === slug);
+
+  // Try static products first
+  let product = products.find((p) => p.slug === slug);
+
+  // Fall back to DB products
+  if (!product && slug.startsWith("db-")) {
+    const id = slug.replace("db-", "");
+    const dbProducts = await fetchDbProducts();
+    const found = dbProducts.find((p) => p.id === id);
+    if (found) product = dbToProduct(found);
+  }
+
   if (!product) notFound();
 
-  const category = categories.find((c) => c.id === product.categoryId);
+  const category = categories.find(
+    (c) => c.id === product!.categoryId || c.slug === product!.categoryId
+  );
   const related = getProductsByCategory(product.categoryId)
-    .filter((p) => p.id !== product.id)
+    .filter((p) => p.id !== product!.id)
     .slice(0, 4);
 
   return (
@@ -68,34 +85,38 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
           {/* Info */}
           <div>
-            <div className="mb-1">
-              <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">
-                {product.brand}
-              </span>
-            </div>
+            {product.brand && (
+              <div className="mb-1">
+                <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">
+                  {product.brand}
+                </span>
+              </div>
+            )}
             <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3 leading-tight">
               {product.name}
             </h1>
 
             {/* Rating */}
-            <div className="flex items-center gap-2 mb-5">
-              <div className="flex items-center gap-0.5">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star
-                    key={star}
-                    className={`w-4 h-4 ${
-                      star <= Math.round(product.rating)
-                        ? "text-amber-400 fill-amber-400"
-                        : "text-gray-200 fill-gray-200"
-                    }`}
-                  />
-                ))}
+            {product.rating > 0 && (
+              <div className="flex items-center gap-2 mb-5">
+                <div className="flex items-center gap-0.5">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                      key={star}
+                      className={`w-4 h-4 ${
+                        star <= Math.round(product!.rating)
+                          ? "text-amber-400 fill-amber-400"
+                          : "text-gray-200 fill-gray-200"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <span className="text-sm font-semibold text-gray-700">{product.rating}</span>
+                <span className="text-sm text-gray-400">
+                  ({product.reviewCount.toLocaleString()} anmeldelser)
+                </span>
               </div>
-              <span className="text-sm font-semibold text-gray-700">{product.rating}</span>
-              <span className="text-sm text-gray-400">
-                ({product.reviewCount.toLocaleString()} anmeldelser)
-              </span>
-            </div>
+            )}
 
             {/* Price */}
             <div className="flex items-center gap-3 mb-6">
@@ -136,9 +157,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {/* Color variants */}
             {product.variants && product.variants.some((v) => v.color) && (
               <div className="mb-5">
-                <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
-                  Farve
-                </p>
+                <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Farve</p>
                 <div className="flex flex-wrap gap-2">
                   {product.variants.map((v) => (
                     <button
@@ -152,25 +171,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
             )}
 
-            {/* Size/label variants */}
-            {product.variants && product.variants.some((v) => v.label && !v.color) && (
-              <div className="mb-5">
-                <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
-                  Pakkestrrelse
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {product.variants.map((v, i) => (
-                    <button
-                      key={v.id}
-                      className={i === 0 ? "btn-primary" : "btn-secondary"}
-                    >
-                      {v.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
             {/* Add to cart */}
             <AddToCartButton product={product} />
 
@@ -179,7 +179,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               {[
                 { icon: Truck, label: "Gratis fragt", sub: "Over 499 kr" },
                 { icon: RotateCcw, label: "30 dages retur", sub: "Nem returret" },
-                { icon: Shield, label: "2 ars garanti", sub: "Garanteret" },
+                { icon: Shield, label: "2 års garanti", sub: "Garanteret" },
               ].map(({ icon: Icon, label, sub }) => (
                 <div key={label} className="flex flex-col items-center text-center gap-1.5">
                   <Icon className="w-4.5 h-4.5 text-blue-600" />
@@ -192,34 +192,38 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
 
         {/* Description & features */}
-        <div className="grid md:grid-cols-2 gap-10 mt-14 pt-14 border-t border-gray-100">
-          <div>
-            <h2 className="text-lg font-bold text-gray-900 mb-3">Om dette produkt</h2>
-            <p className="text-sm text-gray-600 leading-relaxed">{product.description}</p>
+        {(product.description || (product.features && product.features.length > 0)) && (
+          <div className="grid md:grid-cols-2 gap-10 mt-14 pt-14 border-t border-gray-100">
+            {product.description && (
+              <div>
+                <h2 className="text-lg font-bold text-gray-900 mb-3">Om dette produkt</h2>
+                <p className="text-sm text-gray-600 leading-relaxed">{product.description}</p>
+              </div>
+            )}
+            {product.features && product.features.length > 0 && (
+              <div>
+                <h2 className="text-lg font-bold text-gray-900 mb-3">Specifikationer</h2>
+                <ul className="space-y-2.5">
+                  {product.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2.5 text-sm text-gray-700">
+                      <span className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                        <Check className="w-3 h-3 text-blue-600" />
+                      </span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
-          {product.features && product.features.length > 0 && (
-            <div>
-              <h2 className="text-lg font-bold text-gray-900 mb-3">Specifikationer</h2>
-              <ul className="space-y-2.5">
-                {product.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2.5 text-sm text-gray-700">
-                    <span className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
-                      <Check className="w-3 h-3 text-blue-600" />
-                    </span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
+        )}
       </div>
 
       {/* Related products */}
       {related.length > 0 && (
         <section className="bg-gray-50 mt-14 py-14">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <h2 className="text-xl font-extrabold text-gray-900 mb-6">Du vil mske ogs synes om</h2>
+            <h2 className="text-xl font-extrabold text-gray-900 mb-6">Du vil måske også synes om</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {related.map((p) => (
                 <ProductCard key={p.id} product={p} />

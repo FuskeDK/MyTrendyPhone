@@ -3,6 +3,7 @@ import { ArrowRight, Shield, Truck, RotateCcw, Headphones, Smartphone, Zap, Volu
 import { categories } from "@/data/categories";
 import { getFeaturedProducts, getNewArrivals } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import { fetchDbProducts, dbToProduct } from "@/lib/dbProducts";
 
 const perks = [
   { icon: Truck, title: "Gratis fragt", sub: "Ved køb over 499 kr" },
@@ -19,11 +20,16 @@ const categoryIcons: Record<string, React.ElementType> = {
   "screen-protectors": MonitorSmartphone,
   "wireless-charging": Zap,
   "mounts-stands": MonitorSmartphone,
+  "tablet-cases": Smartphone,
 };
 
-export default function HomePage() {
+export const revalidate = 60;
+
+export default async function HomePage() {
   const featured = getFeaturedProducts();
   const newArrivals = getNewArrivals();
+  const dbRaw = await fetchDbProducts();
+  const dbProducts = dbRaw.filter((p) => p.in_stock !== false).map(dbToProduct);
 
   return (
     <div>
@@ -86,7 +92,7 @@ export default function HomePage() {
               <Link
                 key={cat.id}
                 href={`/category/${cat.slug}`}
-                className="group flex items-center gap-3 p-4 rounded-2xl bg-gray-50 hover:bg-blue-50 hover:border-blue-100 border border-transparent transition-all"
+                className="group flex items-center gap-3 p-4 rounded-2xl bg-gray-50 hover:bg-blue-50 border border-transparent hover:border-blue-100 transition-all"
               >
                 <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center shrink-0 group-hover:shadow-md transition-shadow">
                   <Icon className="w-5 h-5 text-[#2563eb]" />
@@ -100,6 +106,22 @@ export default function HomePage() {
           })}
         </div>
       </section>
+
+      {/* ── DB Products (added via dashboard) ── */}
+      {dbProducts.length > 0 && (
+        <section className="border-t border-gray-100 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="flex items-end justify-between mb-8">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">Vores produkter</h2>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              {dbProducts.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Best sellers ── */}
       <section className="border-t border-gray-100 py-16">
@@ -130,25 +152,6 @@ export default function HomePage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {newArrivals.map((p) => (
               <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Brands ── */}
-      <section className="border-t border-gray-100 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-gray-300 mb-8">
-            Officiel forhandler af topbrands
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
-            {["Apple", "Samsung", "Spigen", "Anker", "Sony", "Belkin", "Mujjo", "Otterbox"].map((brand) => (
-              <span
-                key={brand}
-                className="text-base font-extrabold text-gray-200 hover:text-gray-500 transition-colors cursor-pointer tracking-tight"
-              >
-                {brand}
-              </span>
             ))}
           </div>
         </div>

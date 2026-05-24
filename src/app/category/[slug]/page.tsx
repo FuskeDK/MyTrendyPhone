@@ -4,6 +4,9 @@ import { ChevronRight } from "lucide-react";
 import { categories } from "@/data/categories";
 import { getProductsByCategory } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import { fetchDbProducts, dbToProduct } from "@/lib/dbProducts";
+
+export const revalidate = 60;
 
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -14,19 +17,20 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   const category = categories.find((c) => c.slug === slug);
   if (!category) notFound();
 
-  const products = getProductsByCategory(category.id);
+  const staticProducts = getProductsByCategory(category.id);
+
+  const dbRaw = await fetchDbProducts();
+  const dbProducts = dbRaw
+    .filter((p) => p.in_stock !== false && p.category_slug === slug)
+    .map(dbToProduct);
+
+  const allProducts = [...dbProducts, ...staticProducts];
 
   return (
     <div>
       {/* Hero */}
-      <section className="relative bg-gray-900 text-white overflow-hidden">
-        <img
-          src={category.image}
-          alt={category.name}
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-        />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-16">
-          {/* Breadcrumb */}
+      <section className="bg-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
           <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-6">
             <Link href="/" className="hover:text-white transition-colors">Forside</Link>
             <ChevronRight className="w-3 h-3" />
@@ -41,13 +45,13 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="flex items-center justify-between mb-6">
           <p className="text-sm text-gray-400">
-            {products.length > 0
-              ? `${products.length} produkter`
+            {allProducts.length > 0
+              ? `${allProducts.length} produkter`
               : "Ingen produkter i denne kategori endnu"}
           </p>
         </div>
 
-        {products.length === 0 ? (
+        {allProducts.length === 0 ? (
           <div className="py-24 text-center">
             <p className="text-gray-400 mb-4">Ingen produkter fundet i denne kategori.</p>
             <Link href="/" className="btn-primary">
@@ -56,7 +60,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
           </div>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {products.map((p) => (
+            {allProducts.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
